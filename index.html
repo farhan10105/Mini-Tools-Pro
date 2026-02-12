@@ -3,33 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ToolBox Pro - Smart Online Tools</title>
+    <title>ToolBox Pro - Professional Tools</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* Professional Dark Theme */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         }
 
         body {
-            background: #0a0c12;
-            min-height: 100vh;
-            position: relative;
-        }
-
-        /* Animated Background */
-        .bg-gradient {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 30% 40%, rgba(255, 159, 10, 0.08) 0%, transparent 45%),
-                        radial-gradient(circle at 70% 60%, rgba(255, 55, 95, 0.08) 0%, transparent 45%),
-                        radial-gradient(circle at 50% 80%, rgba(94, 92, 230, 0.08) 0%, transparent 50%);
-            z-index: -1;
+            background: #0B0E14;
+            color: white;
         }
 
         /* Splash Screen */
@@ -39,684 +26,1162 @@
             left: 0;
             width: 100%;
             height: 100vh;
-            background: #0a0c12;
+            background: #0B0E14;
             display: flex;
-            justify-content: center;
             align-items: center;
-            z-index: 9999;
-            animation: hideSplash 1.2s ease 1.8s forwards;
+            justify-content: center;
+            z-index: 1000;
+            animation: fadeOut 0.8s ease 1.5s forwards;
         }
 
-        @keyframes hideSplash {
-            to {
-                opacity: 0;
-                visibility: hidden;
-            }
+        @keyframes fadeOut {
+            to { opacity: 0; visibility: hidden; }
         }
 
-        .splash-content {
-            text-align: center;
-            transform: scale(0.8);
-            animation: splashZoom 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-        }
-
-        @keyframes splashZoom {
-            to { transform: scale(1); }
-        }
-
-        .splash-icon {
-            font-size: 90px;
-            color: #ff9f0a;
-            text-shadow: 0 0 30px rgba(255, 159, 10, 0.5);
-            margin-bottom: 20px;
-            animation: spin 0.8s ease;
-        }
-
-        @keyframes spin {
-            from { transform: rotate(-180deg) scale(0.5); }
-            to { transform: rotate(0) scale(1); }
-        }
-
-        .splash-text {
-            font-size: 48px;
-            font-weight: 800;
-            background: linear-gradient(135deg, #ff9f0a, #ff375f);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
+        .splash i {
+            font-size: 70px;
+            color: #FF9F0A;
+            animation: pulse 1s ease;
         }
 
         .container {
-            max-width: 1300px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 30px 20px;
-            position: relative;
-        }
-
-        /* Header with Logo */
-        .header {
-            background: rgba(20, 22, 30, 0.7);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 30px;
             padding: 30px;
-            margin-bottom: 50px;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(18, 22, 30, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 25px 35px;
+            margin-bottom: 40px;
             display: flex;
             align-items: center;
-            gap: 30px;
-            flex-wrap: wrap;
+            justify-content: space-between;
         }
 
-        .logo-wrapper {
+        .logo {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 15px;
         }
 
-        .logo-icon {
-            font-size: 55px;
-            color: #ff9f0a;
-            filter: drop-shadow(0 10px 15px rgba(255, 159, 10, 0.3));
-            animation: float 3s ease infinite;
+        .logo i {
+            font-size: 40px;
+            color: #FF9F0A;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-        }
-
-        .logo-text h1 {
-            font-size: 38px;
-            font-weight: 800;
-            background: linear-gradient(135deg, #ff9f0a, #ff375f);
+        .logo h1 {
+            font-size: 28px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #FF9F0A, #FF375F);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 5px;
-        }
-
-        .logo-text p {
-            color: #a0a8b0;
-            font-size: 16px;
-            font-weight: 500;
-        }
-
-        .badges {
-            display: flex;
-            gap: 15px;
-            margin-left: auto;
-            flex-wrap: wrap;
         }
 
         .badge {
             background: rgba(255, 159, 10, 0.1);
-            border: 1px solid rgba(255, 159, 10, 0.3);
-            color: #ff9f0a;
-            padding: 8px 20px;
-            border-radius: 50px;
+            border: 1px solid rgba(255, 159, 10, 0.2);
+            color: #FF9F0A;
+            padding: 8px 18px;
+            border-radius: 30px;
             font-size: 14px;
-            font-weight: 600;
+            font-weight: 500;
+        }
+
+        /* Navigation */
+        .nav {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            padding: 12px 25px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            color: white;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.2s;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
 
-        /* Section Title */
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
+        .nav-btn:hover {
+            background: rgba(255, 159, 10, 0.1);
+            border-color: #FF9F0A;
         }
 
-        .section-title h2 {
-            color: white;
-            font-size: 36px;
-            font-weight: 700;
-            margin-bottom: 10px;
+        .nav-btn.active {
+            background: #FF9F0A;
+            color: #0B0E14;
+            border-color: #FF9F0A;
         }
 
-        .section-title p {
-            color: #a0a8b0;
-            font-size: 18px;
-        }
-
-        /* Tools Grid - 5 Cards */
-        .tools-grid {
+        /* Tools Grid */
+        .grid {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
             gap: 25px;
-            margin-bottom: 60px;
+            margin-top: 30px;
         }
 
-        .tool-card {
-            background: rgba(20, 22, 30, 0.7);
-            backdrop-filter: blur(10px);
+        .tool {
+            background: rgba(18, 22, 30, 0.95);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 24px;
+            border-radius: 20px;
             padding: 30px 20px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
             text-align: center;
-            position: relative;
-            overflow: hidden;
+            cursor: pointer;
+            transition: 0.2s;
         }
 
-        .tool-card:hover {
-            transform: translateY(-10px);
+        .tool:hover {
+            transform: translateY(-5px);
             border-color: currentColor;
-            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
         }
 
-        /* Original Key Colors - Exact Match */
-        .tool-card[data-color="orange"] { color: #ff9f0a; }
-        .tool-card[data-color="purple"] { color: #5e5ce6; }
-        .tool-card[data-color="blue"] { color: #64d2ff; }
-        .tool-card[data-color="green"] { color: #32d74b; }
-        .tool-card[data-color="pink"] { color: #ff375f; }
-
-        .tool-icon {
+        .tool i {
             font-size: 45px;
             margin-bottom: 20px;
-            color: currentColor;
         }
 
-        .tool-card h3 {
-            font-size: 22px;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 12px;
-        }
-
-        .tool-card p {
-            color: #a0a8b0;
-            font-size: 14px;
-            line-height: 1.5;
-            margin-bottom: 20px;
-            flex: 1;
-        }
-
-        .tool-btn {
-            color: currentColor;
+        .tool h3 {
+            font-size: 20px;
             font-weight: 600;
-            font-size: 15px;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        /* Tool Colors */
+        .password i { color: #FF9F0A; }
+        .password:hover { border-color: #FF9F0A; }
+        
+        .word i { color: #5E5CE6; }
+        .word:hover { border-color: #5E5CE6; }
+        
+        .case i { color: #64D2FF; }
+        .case:hover { border-color: #64D2FF; }
+        
+        .number i { color: #32D74B; }
+        .number:hover { border-color: #32D74B; }
+        
+        .age i { color: #FF375F; }
+        .age:hover { border-color: #FF375F; }
+
+        /* Main Content Area */
+        .content {
+            background: rgba(18, 22, 30, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 40px;
+            min-height: 500px;
+        }
+
+        /* Tool Header */
+        .tool-header {
             display: flex;
             align-items: center;
-            gap: 8px;
-            transition: gap 0.3s ease;
+            gap: 25px;
+            margin-bottom: 35px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
-        .tool-card:hover .tool-btn {
-            gap: 12px;
+        .tool-header i {
+            font-size: 50px;
         }
 
-        /* Footer */
-        .footer {
-            background: rgba(20, 22, 30, 0.5);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 24px;
+        .tool-header h2 {
+            font-size: 32px;
+            font-weight: 700;
+        }
+
+        /* Password Generator */
+        .password-box {
+            background: rgba(255,255,255,0.02);
+            border-radius: 16px;
             padding: 30px;
+            margin-bottom: 25px;
+        }
+
+        .password-display {
+            background: #0B0E14;
+            border-radius: 12px;
+            padding: 20px;
+            font-size: 28px;
+            font-family: monospace;
+            word-break: break-all;
+            margin-bottom: 20px;
+            color: #FF9F0A;
+            border: 1px solid rgba(255,159,10,0.2);
+        }
+
+        .copy-btn {
+            background: #FF9F0A;
+            color: #0B0E14;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 16px;
+        }
+
+        .slider {
+            width: 100%;
+            height: 6px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 3px;
+            margin: 20px 0;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #FF9F0A;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px;
+            background: rgba(255,255,255,0.02);
+            border-radius: 10px;
+        }
+
+        /* Word Counter */
+        .textarea {
+            width: 100%;
+            height: 200px;
+            background: #0B0E14;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 20px;
+            color: white;
+            font-size: 16px;
+            resize: vertical;
+            margin-bottom: 25px;
+        }
+
+        .textarea:focus {
+            outline: none;
+            border-color: #5E5CE6;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .stat {
+            background: rgba(255,255,255,0.02);
+            padding: 25px;
+            border-radius: 16px;
             text-align: center;
-            color: #a0a8b0;
         }
 
-        .footer-heart {
-            color: #ff375f;
-            margin: 0 5px;
+        .stat span {
+            font-size: 36px;
+            font-weight: 700;
+            color: #5E5CE6;
+            display: block;
+            margin-bottom: 8px;
         }
 
-        /* Responsive */
+        /* Case Converter */
+        .case-buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin: 25px 0;
+        }
+
+        .case-btn {
+            padding: 15px;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 10px;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .case-btn:hover {
+            background: #64D2FF;
+            color: #0B0E14;
+        }
+
+        /* Number Converter */
+        .converter-input {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .converter-input input {
+            flex: 2;
+            padding: 15px;
+            background: #0B0E14;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            color: white;
+            font-size: 18px;
+        }
+
+        .converter-input select {
+            flex: 1;
+            padding: 15px;
+            background: #0B0E14;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            color: white;
+        }
+
+        .number-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .number-box {
+            background: rgba(255,255,255,0.02);
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        .number-box label {
+            color: #32D74B;
+            font-size: 14px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .number-box div {
+            font-size: 20px;
+            font-family: monospace;
+            word-break: break-all;
+        }
+
+        /* Age Calculator */
+        .date-inputs {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .date-inputs input,
+        .date-inputs select {
+            width: 100%;
+            padding: 15px;
+            background: #0B0E14;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            color: white;
+        }
+
+        .age-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .age-stat {
+            background: rgba(255,255,255,0.02);
+            padding: 25px;
+            border-radius: 16px;
+            text-align: center;
+        }
+
+        .age-stat span {
+            font-size: 36px;
+            font-weight: 700;
+            color: #FF375F;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .btn {
+            background: #FF9F0A;
+            color: #0B0E14;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 20px rgba(255,159,10,0.2);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Footer with Contact & Legal */
+        .footer {
+            margin-top: 80px;
+            background: rgba(18, 22, 30, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 40px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .footer-section h3 {
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-section h3 i {
+            color: #FF9F0A;
+        }
+
+        .footer-section p {
+            color: rgba(255,255,255,0.7);
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: #25D366;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.2s;
+            margin-top: 10px;
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+        }
+
+        .legal-links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .legal-link {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+
+        .legal-link:hover {
+            color: #FF9F0A;
+            transform: translateX(5px);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: rgba(255,255,255,0.5);
+            font-size: 14px;
+        }
+
+        /* Modal for Terms & Privacy */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #1a1e26;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 800px;
+            width: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .modal-header h2 {
+            color: #FF9F0A;
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .modal-body {
+            color: rgba(255,255,255,0.9);
+            line-height: 1.8;
+        }
+
+        .modal-body h3 {
+            color: #FF9F0A;
+            margin: 25px 0 15px;
+        }
+
+        .modal-body p {
+            margin-bottom: 15px;
+        }
+
+        .modal-body ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .modal-body li {
+            margin-bottom: 10px;
+        }
+
         @media (max-width: 1200px) {
-            .tools-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
+            .grid { grid-template-columns: repeat(3, 1fr); }
+            .stats { grid-template-columns: repeat(2, 1fr); }
+            .footer-content { grid-template-columns: repeat(2, 1fr); }
         }
 
-        @media (max-width: 900px) {
-            .tools-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .badges {
-                margin-left: 0;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .tools-grid {
-                grid-template-columns: 1fr;
-            }
-            .logo-wrapper {
-                flex-direction: column;
-                text-align: center;
-            }
+        @media (max-width: 768px) {
+            .grid { grid-template-columns: repeat(2, 1fr); }
+            .header { flex-direction: column; gap: 20px; }
+            .stats { grid-template-columns: 1fr; }
+            .case-buttons { grid-template-columns: repeat(2, 1fr); }
+            .footer-content { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-    <div class="bg-gradient"></div>
-
     <!-- Splash Screen -->
     <div class="splash">
-        <div class="splash-content">
-            <div class="splash-icon">
-                <i class="fas fa-cubes"></i>
+        <div style="text-align: center;">
+            <i class="fas fa-cubes"></i>
+            <h1 style="font-size: 36px; margin-top: 20px; background: linear-gradient(135deg, #FF9F0A, #FF375F); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">ToolBox Pro</h1>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div id="termsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-file-contract" style="margin-right: 15px;"></i> Terms & Conditions</h2>
+                <button class="close-modal" onclick="closeModal('termsModal')">&times;</button>
             </div>
-            <div class="splash-text">ToolBox Pro</div>
-            <p style="color: #a0a8b0; font-size: 18px;">Professional Tools, Perfect Results</p>
+            <div class="modal-body">
+                <h3>1. Acceptance of Terms</h3>
+                <p>By accessing and using ToolBox Pro, you accept and agree to be bound by the terms and provision of this agreement.</p>
+                
+                <h3>2. Free Service</h3>
+                <p>ToolBox Pro is completely free to use. All tools are provided without any charge.</p>
+                
+                <h3>3. No Warranty</h3>
+                <p>The tools are provided "as is" without any warranty of any kind. We do not guarantee that the tools will be error-free or uninterrupted.</p>
+                
+                <h3>4. Limitation of Liability</h3>
+                <p>ToolBox Pro shall not be liable for any damages arising from the use or inability to use our tools.</p>
+                
+                <h3>5. Changes to Terms</h3>
+                <p>We reserve the right to modify these terms at any time. Continued use of the service constitutes acceptance of new terms.</p>
+                
+                <h3>6. Contact</h3>
+                <p>For any questions regarding these terms, please contact us via WhatsApp at +92 327 0553470</p>
+                
+                <p style="margin-top: 30px; color: rgba(255,255,255,0.6);">Last updated: February 2026</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="privacyModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-shield-alt" style="margin-right: 15px;"></i> Privacy Policy</h2>
+                <button class="close-modal" onclick="closeModal('privacyModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h3>1. Information Collection</h3>
+                <p>We do not collect any personal information. All text and data you enter in our tools stays in your browser and is never sent to our servers.</p>
+                
+                <h3>2. No Data Storage</h3>
+                <p>ToolBox Pro does not store any user data. All processing happens locally in your browser.</p>
+                
+                <h3>3. Cookies</h3>
+                <p>We do not use cookies for tracking. Only essential cookies for website functionality may be used.</p>
+                
+                <h3>4. Third-Party Services</h3>
+                <p>We use Font Awesome for icons. Their privacy policy applies to their service.</p>
+                
+                <h3>5. Children's Privacy</h3>
+                <p>Our service is safe for all ages and does not collect any personal information from anyone.</p>
+                
+                <h3>6. Changes to Policy</h3>
+                <p>Any changes to our privacy policy will be posted on this page.</p>
+                
+                <p style="margin-top: 30px; color: rgba(255,255,255,0.6);">Last updated: February 2026</p>
+            </div>
         </div>
     </div>
 
     <div class="container">
-        <!-- Header with Logo -->
-        <header class="header">
-            <div class="logo-wrapper">
-                <div class="logo-icon">
-                    <i class="fas fa-cubes"></i>
-                </div>
-                <div class="logo-text">
-                    <h1>ToolBox Pro</h1>
-                    <p>Your Complete Solution</p>
-                </div>
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">
+                <i class="fas fa-cubes"></i>
+                <h1>ToolBox Pro</h1>
             </div>
-            <div class="badges">
-                <span class="badge"><i class="fas fa-bolt"></i> Fast</span>
-                <span class="badge"><i class="fas fa-shield"></i> Secure</span>
-                <span class="badge"><i class="fas fa-magic"></i> Free</span>
+            <div class="badge">
+                <i class="fas fa-bolt"></i> 5 Professional Tools
             </div>
-        </header>
-
-        <!-- Title -->
-        <div class="section-title">
-            <h2>⚡ Professional Tools</h2>
-            <p>Click any tool to open its dedicated page</p>
         </div>
 
-        <!-- Tools Grid - 5 Separate Pages -->
-        <div class="tools-grid">
-            <!-- 1. Password Generator - Orange Key -->
-            <a href="#password" class="tool-card" data-color="orange" id="card-password">
-                <div class="tool-icon">
+        <!-- Navigation -->
+        <div class="nav">
+            <div class="nav-btn active" onclick="showHome()">
+                <i class="fas fa-home"></i> Home
+            </div>
+            <div class="nav-btn" onclick="showTool('password')">
+                <i class="fas fa-key"></i> Password
+            </div>
+            <div class="nav-btn" onclick="showTool('word')">
+                <i class="fas fa-file-alt"></i> Word Counter
+            </div>
+            <div class="nav-btn" onclick="showTool('case')">
+                <i class="fas fa-text-height"></i> Case
+            </div>
+            <div class="nav-btn" onclick="showTool('number')">
+                <i class="fas fa-calculator"></i> Number
+            </div>
+            <div class="nav-btn" onclick="showTool('age')">
+                <i class="fas fa-cake-candles"></i> Age
+            </div>
+        </div>
+
+        <!-- Home Page -->
+        <div id="home-page">
+            <div style="margin: 50px 0 30px; text-align: center;">
+                <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 10px;">Professional Tools</h2>
+                <p style="color: rgba(255,255,255,0.6);">Click any tool to start</p>
+            </div>
+            
+            <div class="grid">
+                <div class="tool password" onclick="showTool('password')">
                     <i class="fas fa-key"></i>
+                    <h3>Password Generator</h3>
                 </div>
-                <h3>Password Generator</h3>
-                <p>Create strong, secure passwords with custom length & complexity. Original key icon in orange.</p>
-                <span class="tool-btn">
-                    Open Tool <i class="fas fa-arrow-right"></i>
-                </span>
-            </a>
-
-            <!-- 2. Word Counter - Purple -->
-            <a href="#word" class="tool-card" data-color="purple" id="card-word">
-                <div class="tool-icon">
+                <div class="tool word" onclick="showTool('word')">
                     <i class="fas fa-file-alt"></i>
+                    <h3>Word Counter</h3>
                 </div>
-                <h3>Word Counter</h3>
-                <p>Count words, characters, sentences & reading time in real-time with analytics.</p>
-                <span class="tool-btn">
-                    Open Tool <i class="fas fa-arrow-right"></i>
-                </span>
-            </a>
-
-            <!-- 3. Case Converter - Blue -->
-            <a href="#case" class="tool-card" data-color="blue" id="card-case">
-                <div class="tool-icon">
+                <div class="tool case" onclick="showTool('case')">
                     <i class="fas fa-text-height"></i>
+                    <h3>Case Converter</h3>
                 </div>
-                <h3>Case Converter</h3>
-                <p>Convert text to UPPERCASE, lowercase, Title Case, camelCase & more formats.</p>
-                <span class="tool-btn">
-                    Open Tool <i class="fas fa-arrow-right"></i>
-                </span>
-            </a>
-
-            <!-- 4. Number Converter - Green -->
-            <a href="#number" class="tool-card" data-color="green" id="card-number">
-                <div class="tool-icon">
+                <div class="tool number" onclick="showTool('number')">
                     <i class="fas fa-calculator"></i>
+                    <h3>Number Converter</h3>
                 </div>
-                <h3>Number Converter</h3>
-                <p>Convert between Decimal, Binary, Hex, Octal & Roman numerals instantly.</p>
-                <span class="tool-btn">
-                    Open Tool <i class="fas fa-arrow-right"></i>
-                </span>
-            </a>
-
-            <!-- 5. Age Calculator - Pink -->
-            <a href="#age" class="tool-card" data-color="pink" id="card-age">
-                <div class="tool-icon">
+                <div class="tool age" onclick="showTool('age')">
                     <i class="fas fa-cake-candles"></i>
+                    <h3>Age Calculator</h3>
                 </div>
-                <h3>Age Calculator</h3>
-                <p>Calculate exact age in years, months, days, hours & minutes with precision.</p>
-                <span class="tool-btn">
-                    Open Tool <i class="fas fa-arrow-right"></i>
-                </span>
-            </a>
+            </div>
         </div>
 
-        <!-- Footer -->
+        <!-- Tool Pages -->
+        <div id="tool-pages">
+            <!-- Password Generator -->
+            <div id="tool-password" class="hidden">
+                <div class="tool-header">
+                    <i class="fas fa-key" style="color: #FF9F0A;"></i>
+                    <h2 style="color: #FF9F0A;">Password Generator</h2>
+                </div>
+                
+                <div class="password-box">
+                    <div class="password-display" id="passwordDisplay">P@ssw0rd123!</div>
+                    <button class="copy-btn" onclick="copyPassword()">
+                        <i class="fas fa-copy"></i> Copy Password
+                    </button>
+                </div>
+
+                <div style="margin: 30px 0;">
+                    <label style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                        <span>Password Length: <span id="lengthValue">12</span></span>
+                    </label>
+                    <input type="range" class="slider" id="passwordLength" min="6" max="24" value="12" oninput="updateLength()">
+                </div>
+
+                <div class="options">
+                    <label class="option">
+                        <input type="checkbox" id="uppercase" checked> Uppercase (A-Z)
+                    </label>
+                    <label class="option">
+                        <input type="checkbox" id="lowercase" checked> Lowercase (a-z)
+                    </label>
+                    <label class="option">
+                        <input type="checkbox" id="numbers" checked> Numbers (0-9)
+                    </label>
+                    <label class="option">
+                        <input type="checkbox" id="symbols" checked> Symbols (!@#$)
+                    </label>
+                </div>
+
+                <button class="btn" onclick="generatePassword()">
+                    <i class="fas fa-sync-alt"></i> Generate New Password
+                </button>
+            </div>
+
+            <!-- Word Counter -->
+            <div id="tool-word" class="hidden">
+                <div class="tool-header">
+                    <i class="fas fa-file-alt" style="color: #5E5CE6;"></i>
+                    <h2 style="color: #5E5CE6;">Word Counter</h2>
+                </div>
+                
+                <textarea class="textarea" id="wordText" oninput="countWords()" placeholder="Type or paste your text here...">Welcome to ToolBox Pro</textarea>
+                
+                <div class="stats">
+                    <div class="stat">
+                        <span id="wordCount">2</span>
+                        Words
+                    </div>
+                    <div class="stat">
+                        <span id="charCount">20</span>
+                        Characters
+                    </div>
+                    <div class="stat">
+                        <span id="sentenceCount">1</span>
+                        Sentences
+                    </div>
+                </div>
+            </div>
+
+            <!-- Case Converter -->
+            <div id="tool-case" class="hidden">
+                <div class="tool-header">
+                    <i class="fas fa-text-height" style="color: #64D2FF;"></i>
+                    <h2 style="color: #64D2FF;">Case Converter</h2>
+                </div>
+                
+                <textarea class="textarea" id="caseInput" placeholder="Enter your text..." oninput="convertCase('upper')">convert this text</textarea>
+                
+                <div class="case-buttons">
+                    <button class="case-btn" onclick="convertCase('upper')">UPPERCASE</button>
+                    <button class="case-btn" onclick="convertCase('lower')">lowercase</button>
+                    <button class="case-btn" onclick="convertCase('title')">Title Case</button>
+                    <button class="case-btn" onclick="convertCase('sentence')">Sentence case</button>
+                </div>
+                
+                <textarea class="textarea" id="caseOutput" readonly placeholder="Converted text..." style="margin-top: 20px;">CONVERT THIS TEXT</textarea>
+                
+                <button class="btn" onclick="copyCase()" style="margin-top: 20px;">
+                    <i class="fas fa-copy"></i> Copy Result
+                </button>
+            </div>
+
+            <!-- Number Converter -->
+            <div id="tool-number" class="hidden">
+                <div class="tool-header">
+                    <i class="fas fa-calculator" style="color: #32D74B;"></i>
+                    <h2 style="color: #32D74B;">Number Converter</h2>
+                </div>
+                
+                <div class="converter-input">
+                    <input type="text" id="numberInput" value="255" oninput="convertNumber()">
+                    <select id="numberType" onchange="convertNumber()">
+                        <option value="decimal">Decimal</option>
+                        <option value="binary">Binary</option>
+                        <option value="hex">Hexadecimal</option>
+                        <option value="octal">Octal</option>
+                    </select>
+                </div>
+                
+                <div class="number-grid">
+                    <div class="number-box">
+                        <label>Decimal</label>
+                        <div id="decimalOut">255</div>
+                    </div>
+                    <div class="number-box">
+                        <label>Binary</label>
+                        <div id="binaryOut">11111111</div>
+                    </div>
+                    <div class="number-box">
+                        <label>Hexadecimal</label>
+                        <div id="hexOut">FF</div>
+                    </div>
+                    <div class="number-box">
+                        <label>Octal</label>
+                        <div id="octalOut">377</div>
+                    </div>
+                    <div class="number-box">
+                        <label>Roman</label>
+                        <div id="romanOut">CCLV</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Age Calculator -->
+            <div id="tool-age" class="hidden">
+                <div class="tool-header">
+                    <i class="fas fa-cake-candles" style="color: #FF375F;"></i>
+                    <h2 style="color: #FF375F;">Age Calculator</h2>
+                </div>
+                
+                <div class="date-inputs">
+                    <input type="number" id="birthDay" placeholder="Day" min="1" max="31" value="15">
+                    <select id="birthMonth">
+                        <option value="0">January</option>
+                        <option value="1">February</option>
+                        <option value="2">March</option>
+                        <option value="3">April</option>
+                        <option value="4">May</option>
+                        <option value="5">June</option>
+                        <option value="6">July</option>
+                        <option value="7">August</option>
+                        <option value="8" selected>September</option>
+                        <option value="9">October</option>
+                        <option value="10">November</option>
+                        <option value="11">December</option>
+                    </select>
+                    <input type="number" id="birthYear" placeholder="Year" min="1900" max="2024" value="1995">
+                </div>
+                
+                <button class="btn" onclick="calculateAge()" style="margin-bottom: 30px;">
+                    <i class="fas fa-calculator"></i> Calculate Age
+                </button>
+                
+                <div class="age-stats">
+                    <div class="age-stat">
+                        <span id="ageYears">29</span>
+                        Years
+                    </div>
+                    <div class="age-stat">
+                        <span id="ageMonths">5</span>
+                        Months
+                    </div>
+                    <div class="age-stat">
+                        <span id="ageDays">15</span>
+                        Days
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer with Contact & Legal -->
         <footer class="footer">
-            <p style="margin-bottom: 10px; font-size: 18px; font-weight: 600; color: white;">ToolBox Pro</p>
-            <p>Free online tools for everyday tasks • No registration required • 100% Secure</p>
-            <p style="margin-top: 20px;">© 2026 ToolBox Pro - Made with <span class="footer-heart"><i class="fas fa-heart"></i></span> for simplicity</p>
+            <div class="footer-content">
+                <!-- Contact Section -->
+                <div class="footer-section">
+                    <h3><i class="fas fa-phone-alt"></i> Contact Us</h3>
+                    <p>Have questions or need help? We're here for you!</p>
+                    <a href="https://wa.me/923270553470?text=Hi%21%20I%20need%20help%20with%20ToolBox%20Pro" 
+                       class="whatsapp-btn" 
+                       target="_blank">
+                        <i class="fab fa-whatsapp"></i> +92 327 0553470
+                    </a>
+                    <p style="margin-top: 20px; font-size: 14px;">
+                        <i class="fas fa-clock"></i> 24/7 Available
+                    </p>
+                </div>
+
+                <!-- Legal Section -->
+                <div class="footer-section">
+                    <h3><i class="fas fa-gavel"></i> Legal</h3>
+                    <div class="legal-links">
+                        <div class="legal-link" onclick="openModal('privacyModal')">
+                            <i class="fas fa-shield-alt"></i> Privacy Policy
+                        </div>
+                        <div class="legal-link" onclick="openModal('termsModal')">
+                            <i class="fas fa-file-contract"></i> Terms & Conditions
+                        </div>
+                        <div class="legal-link">
+                            <i class="fas fa-copyright"></i> All Rights Reserved
+                        </div>
+                    </div>
+                </div>
+
+                <!-- About Section -->
+                <div class="footer-section">
+                    <h3><i class="fas fa-info-circle"></i> About</h3>
+                    <p>ToolBox Pro provides professional free online tools for everyday tasks. All tools work directly in your browser - no data is sent to our servers.</p>
+                    <p style="margin-top: 15px;">
+                        <i class="fas fa-check-circle" style="color: #32D74B;"></i> 100% Free<br>
+                        <i class="fas fa-check-circle" style="color: #32D74B;"></i> No Registration<br>
+                        <i class="fas fa-check-circle" style="color: #32D74B;"></i> Private & Secure
+                    </p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2026 ToolBox Pro. All rights reserved. | Made with <i class="fas fa-heart" style="color: #FF375F;"></i> for simplicity</p>
+                <p style="margin-top: 10px; font-size: 12px;">Version 2.0 | Professional Tools Collection</p>
+            </div>
         </footer>
     </div>
 
     <script>
-        // Hide splash screen after animation
-        setTimeout(() => {
-            document.querySelector('.splash').style.display = 'none';
-        }, 2800);
-
-        // Tool pages data - proper separate pages content
-        const toolPages = {
-            password: {
-                title: '🔐 Password Generator',
-                icon: 'fa-key',
-                color: '#ff9f0a',
-                description: 'Create strong, secure passwords instantly'
-            },
-            word: {
-                title: '📝 Word Counter',
-                icon: 'fa-file-alt',
-                color: '#5e5ce6',
-                description: 'Real-time text analysis and statistics'
-            },
-            case: {
-                title: '🔄 Case Converter',
-                icon: 'fa-text-height',
-                color: '#64d2ff',
-                description: 'Convert text to any case format'
-            },
-            number: {
-                title: '🔢 Number Converter',
-                icon: 'fa-calculator',
-                color: '#32d74b',
-                description: 'Universal number system converter'
-            },
-            age: {
-                title: '🎂 Age Calculator',
-                icon: 'fa-cake-candles',
-                color: '#ff375f',
-                description: 'Calculate exact age in multiple units'
-            }
-        };
-
-        // Show selected tool page
-        function showToolPage(toolId) {
-            const tool = toolPages[toolId];
-            if (!tool) return;
-
-            // Create full page content
-            const pageHTML = `
-                <!DOCTYPE html>
-                <html>
-                <head>
-                    <meta charset="UTF-8">
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <title>${tool.title} - ToolBox Pro</title>
-                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-                    <style>
-                        * {
-                            margin: 0;
-                            padding: 0;
-                            box-sizing: border-box;
-                            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-                        }
-                        body {
-                            background: #0a0c12;
-                            min-height: 100vh;
-                            padding: 30px;
-                        }
-                        .page {
-                            max-width: 1300px;
-                            margin: 0 auto;
-                        }
-                        /* Navigation */
-                        .nav {
-                            background: rgba(20,22,30,0.8);
-                            backdrop-filter: blur(15px);
-                            border: 1px solid rgba(255,255,255,0.08);
-                            border-radius: 30px;
-                            padding: 20px 30px;
-                            margin-bottom: 30px;
-                            display: flex;
-                            align-items: center;
-                            justify-content: space-between;
-                            flex-wrap: wrap;
-                        }
-                        .nav-logo {
-                            display: flex;
-                            align-items: center;
-                            gap: 15px;
-                        }
-                        .nav-logo i {
-                            font-size: 35px;
-                            color: #ff9f0a;
-                        }
-                        .nav-logo span {
-                            font-size: 24px;
-                            font-weight: 700;
-                            background: linear-gradient(135deg, #ff9f0a, #ff375f);
-                            -webkit-background-clip: text;
-                            -webkit-text-fill-color: transparent;
-                        }
-                        .nav-links {
-                            display: flex;
-                            gap: 20px;
-                        }
-                        .nav-link {
-                            color: white;
-                            text-decoration: none;
-                            padding: 10px 20px;
-                            border-radius: 50px;
-                            background: rgba(255,255,255,0.05);
-                            transition: all 0.3s ease;
-                        }
-                        .nav-link:hover {
-                            background: ${tool.color};
-                            color: black;
-                        }
-                        /* Tool Header */
-                        .tool-header {
-                            background: rgba(20,22,30,0.7);
-                            backdrop-filter: blur(10px);
-                            border: 1px solid rgba(255,255,255,0.08);
-                            border-radius: 30px;
-                            padding: 40px;
-                            margin-bottom: 30px;
-                            display: flex;
-                            align-items: center;
-                            gap: 30px;
-                            flex-wrap: wrap;
-                        }
-                        .tool-icon-large {
-                            font-size: 70px;
-                            color: ${tool.color};
-                            background: rgba(255,255,255,0.03);
-                            width: 120px;
-                            height: 120px;
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-                            border-radius: 30px;
-                            border: 1px solid ${tool.color}40;
-                        }
-                        .tool-info h1 {
-                            font-size: 42px;
-                            font-weight: 800;
-                            color: white;
-                            margin-bottom: 10px;
-                        }
-                        .tool-info p {
-                            color: #a0a8b0;
-                            font-size: 18px;
-                        }
-                        /* Tool Content */
-                        .tool-content {
-                            background: rgba(20,22,30,0.7);
-                            backdrop-filter: blur(10px);
-                            border: 1px solid rgba(255,255,255,0.08);
-                            border-radius: 30px;
-                            padding: 40px;
-                            margin-bottom: 30px;
-                        }
-                        .back-btn {
-                            display: inline-flex;
-                            align-items: center;
-                            gap: 10px;
-                            color: white;
-                            text-decoration: none;
-                            padding: 15px 30px;
-                            background: rgba(255,255,255,0.05);
-                            border-radius: 50px;
-                            font-weight: 600;
-                            transition: all 0.3s ease;
-                        }
-                        .back-btn:hover {
-                            background: rgba(255,255,255,0.1);
-                            transform: translateX(-5px);
-                        }
-                        .feature-badge {
-                            display: inline-block;
-                            padding: 10px 25px;
-                            background: ${tool.color}20;
-                            border: 1px solid ${tool.color}40;
-                            color: ${tool.color};
-                            border-radius: 50px;
-                            font-weight: 600;
-                            margin-bottom: 30px;
-                        }
-                        .coming-soon {
-                            text-align: center;
-                            padding: 60px 40px;
-                            background: rgba(255,255,255,0.02);
-                            border-radius: 20px;
-                            border: 1px dashed ${tool.color}40;
-                        }
-                        .coming-soon i {
-                            font-size: 80px;
-                            color: ${tool.color};
-                            margin-bottom: 20px;
-                        }
-                        .coming-soon h2 {
-                            font-size: 32px;
-                            color: white;
-                            margin-bottom: 15px;
-                        }
-                        .coming-soon p {
-                            color: #a0a8b0;
-                            font-size: 18px;
-                        }
-                        @media (max-width: 768px) {
-                            .nav { flex-direction: column; gap: 15px; }
-                            .tool-header { flex-direction: column; text-align: center; }
-                            .tool-icon-large { margin: 0 auto; }
-                        }
-                    </style>
-                </head>
-                <body>
-                    <div class="page">
-                        <!-- Navigation -->
-                        <nav class="nav">
-                            <div class="nav-logo">
-                                <i class="fas fa-cubes"></i>
-                                <span>ToolBox Pro</span>
-                            </div>
-                            <div class="nav-links">
-                                <a href="#" onclick="window.location.href=window.location.pathname; return false;" class="nav-link">
-                                    <i class="fas fa-home"></i> Home
-                                </a>
-                                <a href="#" onclick="window.location.href='#${toolId}'; return false;" class="nav-link" style="background: ${tool.color}; color: black;">
-                                    <i class="fas fa-${tool.icon}"></i> ${tool.title.split(' ')[0]}
-                                </a>
-                            </div>
-                        </nav>
-
-                        <!-- Tool Header -->
-                        <div class="tool-header">
-                            <div class="tool-icon-large">
-                                <i class="fas ${tool.icon}"></i>
-                            </div>
-                            <div class="tool-info">
-                                <h1>${tool.title}</h1>
-                                <p>${tool.description}</p>
-                                <span class="feature-badge" style="margin-top: 20px;">
-                                    <i class="fas fa-check-circle"></i> Dedicated Page • Original Colors • Professional Design
-                                </span>
-                            </div>
-                        </div>
-
-                        <!-- Tool Content -->
-                        <div class="tool-content">
-                            <div class="coming-soon">
-                                <i class="fas ${tool.icon}"></i>
-                                <h2>✨ ${tool.title}</h2>
-                                <p style="margin-bottom: 30px;">This is a dedicated page for ${tool.title} with original ${tool.color} color scheme.</p>
-                                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-                                    <span style="padding: 15px 30px; background: ${tool.color}; color: black; border-radius: 50px; font-weight: 700;">
-                                        <i class="fas fa-check"></i> Color: ${tool.color}
-                                    </span>
-                                    <span style="padding: 15px 30px; background: rgba(255,255,255,0.05); color: white; border-radius: 50px; font-weight: 700;">
-                                        <i class="fas fa-cube"></i> Separate Page
-                                    </span>
-                                </div>
-                                <p style="margin-top: 40px; color: #a0a8b0;">
-                                    <i class="fas fa-arrow-left"></i> Click Home to go back • This is a proper separate page
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- Back Button -->
-                        <a href="#" onclick="window.location.href=window.location.pathname; return false;" class="back-btn">
-                            <i class="fas fa-arrow-left"></i> Back to Home
-                        </a>
-                    </div>
-
-                    <script>
-                        // Set page title
-                        document.title = "${tool.title} - ToolBox Pro";
-                    </script>
-                </body>
-                </html>
-            `;
-
-            // Open in new window/tab
-            const newWindow = window.open('', '_blank');
-            newWindow.document.write(pageHTML);
-            newWindow.document.close();
+        // Modal Functions
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
 
-        // Add click handlers to all tool cards
-        document.getElementById('card-password').addEventListener('click', function(e) {
-            e.preventDefault();
-            showToolPage('password');
-        });
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
 
-        document.getElementById('card-word').addEventListener('click', function(e) {
-            e.preventDefault();
-            showToolPage('word');
-        });
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
 
-        document.getElementById('card-case').addEventListener('click', function(e) {
-            e.preventDefault();
-            showToolPage('case');
-        });
+        // Page Navigation
+        function showHome() {
+            document.getElementById('home-page').style.display = 'block';
+            document.querySelectorAll('#tool-pages > div').forEach(el => el.classList.add('hidden'));
+            
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.nav-btn')[0].classList.add('active');
+        }
 
-        document.getElementById('card-number').addEventListener('click', function(e) {
-            e.preventDefault();
-            showToolPage('number');
-        });
+        function showTool(tool) {
+            document.getElementById('home-page').style.display = 'none';
+            document.querySelectorAll('#tool-pages > div').forEach(el => el.classList.add('hidden'));
+            document.getElementById(`tool-${tool}`).classList.remove('hidden');
+            
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                if(btn.innerHTML.includes(tool) || (tool === 'password' && btn.innerHTML.includes('Password'))) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Initialize tool
+            if(tool === 'password') generatePassword();
+            if(tool === 'word') countWords();
+            if(tool === 'case') convertCase('upper');
+            if(tool === 'number') convertNumber();
+            if(tool === 'age') calculateAge();
+        }
 
-        document.getElementById('card-age').addEventListener('click', function(e) {
-            e.preventDefault();
-            showToolPage('age');
-        });
+        // Password Generator
+        function generatePassword() {
+            const length = parseInt(document.getElementById('passwordLength').value);
+            const uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            const lowercase = 'abcdefghijklmnopqrstuvwxyz';
+            const numbers = '0123456789';
+            const symbols = '!@#$%^&*()_+-=[]{}|;:,.<>?';
+            
+            let chars = '';
+            if(document.getElementById('uppercase').checked) chars += uppercase;
+            if(document.getElementById('lowercase').checked) chars += lowercase;
+            if(document.getElementById('numbers').checked) chars += numbers;
+            if(document.getElementById('symbols').checked) chars += symbols;
+            
+            if(chars === '') chars = uppercase + lowercase + numbers;
+            
+            let password = '';
+            for(let i = 0; i < length; i++) {
+                password += chars[Math.floor(Math.random() * chars.length)];
+            }
+            
+            document.getElementById('passwordDisplay').textContent = password;
+        }
+
+        function updateLength() {
+            const val = document.getElementById('passwordLength').value;
+            document.getElementById('lengthValue').textContent = val;
+            generatePassword();
+        }
+
+        function copyPassword() {
+            const pass = document.getElementById('passwordDisplay').textContent;
+            navigator.clipboard.writeText(pass);
+            alert('Password copied to clipboard!');
+        }
+
+        // Word Counter
+        function countWords() {
+            const text = document.getElementById('wordText').value;
+            const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+            const chars = text.length;
+            const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 0).length || 1;
+            
+            document.getElementById('wordCount').textContent = words;
+            document.getElementById('charCount').textContent = chars;
+            document.getElementById('sentenceCount').textContent = sentences;
+        }
+
+        // Case Converter
+        function convertCase(type) {
+            const input = document.getElementById('caseInput').value;
+            let output = input;
+            
+            switch(type) {
+                case 'upper': 
+                    output = input.toUpperCase(); 
+                    break;
+                case 'lower': 
+                    output = input.toLowerCase(); 
+                    break;
+                case 'title': 
+                    output = input.toLowerCase().replace(/\b\w/g, l => l.toUpperCase()); 
+                    break;
+                case 'sentence':
+                    output = input.toLowerCase().replace(/(^\s*\w|[.!?]\s+\w)/g, l => l.toUpperCase());
+                    break;
+            }
+            
+            document.getElementById('caseOutput').value = output;
+        }
+
+        function copyCase() {
+            const text = document.getElementById('caseOutput').value;
+            navigator.clipboard.writeText(text);
+            alert('Text copied to clipboard!');
+        }
+
+        // Number Converter
+        function convertNumber() {
+            const input = document.getElementById('numberInput').value;
+            const type = document.getElementById('numberType').value;
+            let num = 0;
+            
+            try {
+                if(type === 'decimal') num = parseInt(input) || 0;
+                if(type === 'binary') num = parseInt(input, 2) || 0;
+                if(type === 'hex') num = parseInt(input, 16) || 0;
+                if(type === 'octal') num = parseInt(input, 8) || 0;
+                
+                document.getElementById('decimalOut').textContent = num;
+                document.getElementById('binaryOut').textContent = num.toString(2);
+                document.getElementById('hexOut').textContent = num.toString(16).toUpperCase();
+                document.getElementById('octalOut').textContent = num.toString(8);
+                
+                // Roman numerals
+                const roman = ['M','CM','D','CD','C','XC','L','XL','X','IX','V','IV','I'];
+                const values = [1000,900,500,400,100,90,50,40,10,9,5,4,1];
+                let romanNum = '';
+                let n = Math.min(num, 3999);
+                for(let i = 0; i < values.length; i++) {
+                    while(n >= values[i]) {
+                        romanNum += roman[i];
+                        n -= values[i];
+                    }
+                }
+                document.getElementById('romanOut').textContent = romanNum || '0';
+            } catch(e) {
+                // Ignore errors
+            }
+        }
+
+        // Age Calculator
+        function calculateAge() {
+            const day = parseInt(document.getElementById('birthDay').value) || 1;
+            const month = parseInt(document.getElementById('birthMonth').value) || 0;
+            const year = parseInt(document.getElementById('birthYear').value) || 2000;
+            
+            const birth = new Date(year, month, day);
+            const today = new Date();
+            
+            let years = today.getFullYear() - birth.getFullYear();
+            let months = today.getMonth() - birth.getMonth();
+            let days = today.getDate() - birth.getDate();
+            
+            if(days < 0) {
+                months--;
+                const lastMonth = new Date(today.getFullYear(), today.getMonth(), 0);
+                days += lastMonth.getDate();
+            }
+            
+            if(months < 0) {
+                years--;
+                months += 12;
+            }
+            
+            document.getElementById('ageYears').textContent = years;
+            document.getElementById('ageMonths').textContent = months;
+            document.getElementById('ageDays').textContent = days;
+        }
+
+        // Initialize
+        window.onload = function() {
+            showHome();
+            setTimeout(() => {
+                document.querySelector('.splash').style.display = 'none';
+            }, 2000);
+        }
     </script>
 </body>
 </html>
