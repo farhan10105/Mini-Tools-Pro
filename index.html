@@ -19,7 +19,7 @@
             color: white;
         }
 
-        /* Splash Screen */
+        /* Splash Screen with 3D Cubes */
         .splash {
             position: fixed;
             top: 0;
@@ -30,18 +30,135 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 1000;
-            animation: fadeOut 0.8s ease 1.5s forwards;
+            z-index: 9999;
+            animation: fadeOut 0.8s ease 2.2s forwards;
         }
 
         @keyframes fadeOut {
             to { opacity: 0; visibility: hidden; }
         }
 
-        .splash i {
-            font-size: 70px;
-            color: #FF9F0A;
-            animation: pulse 1s ease;
+        /* 3D Cubes Container */
+        .cube-container {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 30px;
+        }
+
+        /* Cube Base Styles */
+        .cube {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(145deg, #FF9F0A, #FF375F);
+            border-radius: 12px;
+            box-shadow: 0 0 30px rgba(255,159,10,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        /* Cube 1 - Drops from top */
+        .cube1 {
+            top: -100px;
+            left: 0;
+            animation: dropCube1 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.2s forwards,
+                       float1 3s ease-in-out 1.2s infinite;
+        }
+
+        /* Cube 2 - Drops from top */
+        .cube2 {
+            top: -100px;
+            left: 60px;
+            background: linear-gradient(145deg, #5E5CE6, #64D2FF);
+            box-shadow: 0 0 30px rgba(94,92,230,0.5);
+            animation: dropCube2 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.4s forwards,
+                       float2 3.2s ease-in-out 1.4s infinite;
+        }
+
+        /* Cube 3 - Drops from top */
+        .cube3 {
+            top: -100px;
+            left: 120px;
+            background: linear-gradient(145deg, #32D74B, #FF375F);
+            box-shadow: 0 0 30px rgba(50,215,75,0.5);
+            animation: dropCube3 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.6s forwards,
+                       float3 2.8s ease-in-out 1.6s infinite;
+        }
+
+        /* Drop Animations */
+        @keyframes dropCube1 {
+            0% { top: -100px; transform: rotate(-45deg); }
+            70% { top: 30px; transform: rotate(10deg); }
+            100% { top: 0; transform: rotate(0deg); }
+        }
+
+        @keyframes dropCube2 {
+            0% { top: -100px; transform: rotate(45deg); }
+            70% { top: 30px; transform: rotate(-10deg); }
+            100% { top: 0; transform: rotate(0deg); left: 60px; }
+        }
+
+        @keyframes dropCube3 {
+            0% { top: -100px; transform: rotate(-45deg); }
+            70% { top: 30px; transform: rotate(15deg); }
+            100% { top: 0; transform: rotate(0deg); left: 120px; }
+        }
+
+        /* Floating Animations - Up & Down */
+        @keyframes float1 {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(5deg); }
+        }
+
+        @keyframes float2 {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-18px) rotate(-5deg); }
+        }
+
+        @keyframes float3 {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(8deg); }
+        }
+
+        /* Collab Effect - After Drop */
+        .cube1, .cube2, .cube3 {
+            transition: all 0.3s ease;
+        }
+
+        .cube-container:hover .cube1 {
+            transform: translateX(-10px) translateY(-10px) rotate(-15deg);
+        }
+
+        .cube-container:hover .cube2 {
+            transform: translateY(-15px) scale(1.1);
+        }
+
+        .cube-container:hover .cube3 {
+            transform: translateX(10px) translateY(-10px) rotate(15deg);
+        }
+
+        .splash-content {
+            text-align: center;
+        }
+
+        .splash-title {
+            font-size: 42px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FF9F0A, #FF375F, #5E5CE6, #32D74B);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-top: 20px;
+            opacity: 0;
+            animation: fadeInText 0.5s ease 1s forwards;
+        }
+
+        @keyframes fadeInText {
+            to { opacity: 1; }
         }
 
         .container {
@@ -50,31 +167,74 @@
             padding: 30px;
         }
 
-        /* Header */
+        /* Header with Animated Logo */
         .header {
             background: rgba(18, 22, 30, 0.95);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 20px;
-            padding: 25px 35px;
+            padding: 20px 35px;
             margin-bottom: 40px;
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
 
-        .logo {
+        /* Header Logo - Floating Cubes */
+        .header-logo {
             display: flex;
             align-items: center;
             gap: 15px;
+            position: relative;
         }
 
-        .logo i {
-            font-size: 40px;
-            color: #FF9F0A;
+        .header-cubes {
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .logo h1 {
+        .header-cube {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(145deg, #FF9F0A, #FF375F);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            animation: headerFloat 2.5s ease-in-out infinite;
+            box-shadow: 0 0 20px rgba(255,159,10,0.3);
+        }
+
+        .header-cube:nth-child(2) {
+            background: linear-gradient(145deg, #5E5CE6, #64D2FF);
+            animation-delay: 0.3s;
+            box-shadow: 0 0 20px rgba(94,92,230,0.3);
+        }
+
+        .header-cube:nth-child(3) {
+            background: linear-gradient(145deg, #32D74B, #FF375F);
+            animation-delay: 0.6s;
+            box-shadow: 0 0 20px rgba(50,215,75,0.3);
+        }
+
+        @keyframes headerFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(5deg); }
+        }
+
+        .header-cube:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .header-cube:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        .header-text h1 {
             font-size: 28px;
             font-weight: 700;
             background: linear-gradient(135deg, #FF9F0A, #FF375F);
@@ -118,10 +278,47 @@
             border-color: #FF9F0A;
         }
 
-        .nav-btn.active {
+        /* Active States - Original Colors */
+        .nav-btn.active-home {
+            background: #0B0E14;
+            color: white;
+            border: 2px solid #FF9F0A;
+            box-shadow: 0 0 15px rgba(255,159,10,0.3);
+        }
+        
+        .nav-btn.active-password {
             background: #FF9F0A;
             color: #0B0E14;
             border-color: #FF9F0A;
+            box-shadow: 0 0 15px rgba(255,159,10,0.3);
+        }
+        
+        .nav-btn.active-word {
+            background: #5E5CE6;
+            color: white;
+            border-color: #5E5CE6;
+            box-shadow: 0 0 15px rgba(94,92,230,0.3);
+        }
+        
+        .nav-btn.active-case {
+            background: #64D2FF;
+            color: #0B0E14;
+            border-color: #64D2FF;
+            box-shadow: 0 0 15px rgba(100,210,255,0.3);
+        }
+        
+        .nav-btn.active-number {
+            background: #32D74B;
+            color: #0B0E14;
+            border-color: #32D74B;
+            box-shadow: 0 0 15px rgba(50,215,75,0.3);
+        }
+        
+        .nav-btn.active-age {
+            background: #FF375F;
+            color: white;
+            border-color: #FF375F;
+            box-shadow: 0 0 15px rgba(255,55,95,0.3);
         }
 
         /* Tools Grid */
@@ -446,7 +643,7 @@
             display: none;
         }
 
-        /* Footer with Contact & Legal */
+        /* Footer */
         .footer {
             margin-top: 80px;
             background: rgba(18, 22, 30, 0.95);
@@ -530,7 +727,7 @@
             font-size: 14px;
         }
 
-        /* Modal for Terms & Privacy */
+        /* Modal */
         .modal {
             display: none;
             position: fixed;
@@ -592,40 +789,30 @@
             margin: 25px 0 15px;
         }
 
-        .modal-body p {
-            margin-bottom: 15px;
-        }
-
-        .modal-body ul {
-            margin-left: 20px;
-            margin-bottom: 15px;
-        }
-
-        .modal-body li {
-            margin-bottom: 10px;
-        }
-
         @media (max-width: 1200px) {
             .grid { grid-template-columns: repeat(3, 1fr); }
-            .stats { grid-template-columns: repeat(2, 1fr); }
             .footer-content { grid-template-columns: repeat(2, 1fr); }
         }
 
         @media (max-width: 768px) {
             .grid { grid-template-columns: repeat(2, 1fr); }
-            .header { flex-direction: column; gap: 20px; }
-            .stats { grid-template-columns: 1fr; }
-            .case-buttons { grid-template-columns: repeat(2, 1fr); }
+            .header { flex-direction: column; }
             .footer-content { grid-template-columns: 1fr; }
+            .cube-container { transform: scale(0.8); }
         }
     </style>
 </head>
 <body>
-    <!-- Splash Screen -->
+    <!-- Splash Screen with 3D Cubes Drop Animation -->
     <div class="splash">
-        <div style="text-align: center;">
-            <i class="fas fa-cubes"></i>
-            <h1 style="font-size: 36px; margin-top: 20px; background: linear-gradient(135deg, #FF9F0A, #FF375F); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">ToolBox Pro</h1>
+        <div class="splash-content">
+            <div class="cube-container">
+                <div class="cube cube1">P</div>
+                <div class="cube cube2">R</div>
+                <div class="cube cube3">O</div>
+            </div>
+            <h1 class="splash-title">ToolBox Pro</h1>
+            <p style="color: rgba(255,255,255,0.8); font-size: 18px; margin-top: 10px; opacity: 0; animation: fadeInText 0.5s ease 1.2s forwards;">Professional Tools Collection</p>
         </div>
     </div>
 
@@ -633,29 +820,18 @@
     <div id="termsModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2><i class="fas fa-file-contract" style="margin-right: 15px;"></i> Terms & Conditions</h2>
+                <h2><i class="fas fa-file-contract"></i> Terms & Conditions</h2>
                 <button class="close-modal" onclick="closeModal('termsModal')">&times;</button>
             </div>
             <div class="modal-body">
                 <h3>1. Acceptance of Terms</h3>
                 <p>By accessing and using ToolBox Pro, you accept and agree to be bound by the terms and provision of this agreement.</p>
-                
                 <h3>2. Free Service</h3>
                 <p>ToolBox Pro is completely free to use. All tools are provided without any charge.</p>
-                
                 <h3>3. No Warranty</h3>
-                <p>The tools are provided "as is" without any warranty of any kind. We do not guarantee that the tools will be error-free or uninterrupted.</p>
-                
-                <h3>4. Limitation of Liability</h3>
-                <p>ToolBox Pro shall not be liable for any damages arising from the use or inability to use our tools.</p>
-                
-                <h3>5. Changes to Terms</h3>
-                <p>We reserve the right to modify these terms at any time. Continued use of the service constitutes acceptance of new terms.</p>
-                
-                <h3>6. Contact</h3>
-                <p>For any questions regarding these terms, please contact us via WhatsApp at +92 327 0553470</p>
-                
-                <p style="margin-top: 30px; color: rgba(255,255,255,0.6);">Last updated: February 2026</p>
+                <p>The tools are provided "as is" without any warranty of any kind.</p>
+                <h3>4. Contact</h3>
+                <p>For any questions, contact us via WhatsApp at +92 327 0553470</p>
             </div>
         </div>
     </div>
@@ -663,63 +839,56 @@
     <div id="privacyModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2><i class="fas fa-shield-alt" style="margin-right: 15px;"></i> Privacy Policy</h2>
+                <h2><i class="fas fa-shield-alt"></i> Privacy Policy</h2>
                 <button class="close-modal" onclick="closeModal('privacyModal')">&times;</button>
             </div>
             <div class="modal-body">
                 <h3>1. Information Collection</h3>
-                <p>We do not collect any personal information. All text and data you enter in our tools stays in your browser and is never sent to our servers.</p>
-                
+                <p>We do not collect any personal information. All processing happens locally in your browser.</p>
                 <h3>2. No Data Storage</h3>
-                <p>ToolBox Pro does not store any user data. All processing happens locally in your browser.</p>
-                
-                <h3>3. Cookies</h3>
-                <p>We do not use cookies for tracking. Only essential cookies for website functionality may be used.</p>
-                
-                <h3>4. Third-Party Services</h3>
-                <p>We use Font Awesome for icons. Their privacy policy applies to their service.</p>
-                
-                <h3>5. Children's Privacy</h3>
-                <p>Our service is safe for all ages and does not collect any personal information from anyone.</p>
-                
-                <h3>6. Changes to Policy</h3>
-                <p>Any changes to our privacy policy will be posted on this page.</p>
-                
-                <p style="margin-top: 30px; color: rgba(255,255,255,0.6);">Last updated: February 2026</p>
+                <p>ToolBox Pro does not store any user data.</p>
+                <h3>3. Third-Party Services</h3>
+                <p>We use Font Awesome for icons.</p>
             </div>
         </div>
     </div>
 
     <div class="container">
-        <!-- Header -->
+        <!-- Header with Animated Floating Cubes -->
         <div class="header">
-            <div class="logo">
-                <i class="fas fa-cubes"></i>
-                <h1>ToolBox Pro</h1>
+            <div class="header-logo">
+                <div class="header-cubes">
+                    <div class="header-cube">P</div>
+                    <div class="header-cube">R</div>
+                    <div class="header-cube">O</div>
+                </div>
+                <div class="header-text">
+                    <h1>ToolBox Pro</h1>
+                </div>
             </div>
             <div class="badge">
-                <i class="fas fa-bolt"></i> 5 Professional Tools
+                <i class="fas fa-cubes"></i> 3D Collection
             </div>
         </div>
 
         <!-- Navigation -->
         <div class="nav">
-            <div class="nav-btn active" onclick="showHome()">
+            <div class="nav-btn" id="nav-home" onclick="showHome()">
                 <i class="fas fa-home"></i> Home
             </div>
-            <div class="nav-btn" onclick="showTool('password')">
+            <div class="nav-btn" id="nav-password" onclick="showTool('password')">
                 <i class="fas fa-key"></i> Password
             </div>
-            <div class="nav-btn" onclick="showTool('word')">
+            <div class="nav-btn" id="nav-word" onclick="showTool('word')">
                 <i class="fas fa-file-alt"></i> Word Counter
             </div>
-            <div class="nav-btn" onclick="showTool('case')">
+            <div class="nav-btn" id="nav-case" onclick="showTool('case')">
                 <i class="fas fa-text-height"></i> Case
             </div>
-            <div class="nav-btn" onclick="showTool('number')">
+            <div class="nav-btn" id="nav-number" onclick="showTool('number')">
                 <i class="fas fa-calculator"></i> Number
             </div>
-            <div class="nav-btn" onclick="showTool('age')">
+            <div class="nav-btn" id="nav-age" onclick="showTool('age')">
                 <i class="fas fa-cake-candles"></i> Age
             </div>
         </div>
@@ -763,39 +932,25 @@
                     <i class="fas fa-key" style="color: #FF9F0A;"></i>
                     <h2 style="color: #FF9F0A;">Password Generator</h2>
                 </div>
-                
                 <div class="password-box">
                     <div class="password-display" id="passwordDisplay">P@ssw0rd123!</div>
                     <button class="copy-btn" onclick="copyPassword()">
                         <i class="fas fa-copy"></i> Copy Password
                     </button>
                 </div>
-
                 <div style="margin: 30px 0;">
-                    <label style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                    <label style="display: flex; justify-content: space-between;">
                         <span>Password Length: <span id="lengthValue">12</span></span>
                     </label>
                     <input type="range" class="slider" id="passwordLength" min="6" max="24" value="12" oninput="updateLength()">
                 </div>
-
                 <div class="options">
-                    <label class="option">
-                        <input type="checkbox" id="uppercase" checked> Uppercase (A-Z)
-                    </label>
-                    <label class="option">
-                        <input type="checkbox" id="lowercase" checked> Lowercase (a-z)
-                    </label>
-                    <label class="option">
-                        <input type="checkbox" id="numbers" checked> Numbers (0-9)
-                    </label>
-                    <label class="option">
-                        <input type="checkbox" id="symbols" checked> Symbols (!@#$)
-                    </label>
+                    <label class="option"><input type="checkbox" id="uppercase" checked> Uppercase (A-Z)</label>
+                    <label class="option"><input type="checkbox" id="lowercase" checked> Lowercase (a-z)</label>
+                    <label class="option"><input type="checkbox" id="numbers" checked> Numbers (0-9)</label>
+                    <label class="option"><input type="checkbox" id="symbols" checked> Symbols (!@#$)</label>
                 </div>
-
-                <button class="btn" onclick="generatePassword()">
-                    <i class="fas fa-sync-alt"></i> Generate New Password
-                </button>
+                <button class="btn" onclick="generatePassword()"><i class="fas fa-sync-alt"></i> Generate New Password</button>
             </div>
 
             <!-- Word Counter -->
@@ -804,22 +959,11 @@
                     <i class="fas fa-file-alt" style="color: #5E5CE6;"></i>
                     <h2 style="color: #5E5CE6;">Word Counter</h2>
                 </div>
-                
-                <textarea class="textarea" id="wordText" oninput="countWords()" placeholder="Type or paste your text here...">Welcome to ToolBox Pro</textarea>
-                
+                <textarea class="textarea" id="wordText" oninput="countWords()" placeholder="Type or paste your text...">Welcome to ToolBox Pro</textarea>
                 <div class="stats">
-                    <div class="stat">
-                        <span id="wordCount">2</span>
-                        Words
-                    </div>
-                    <div class="stat">
-                        <span id="charCount">20</span>
-                        Characters
-                    </div>
-                    <div class="stat">
-                        <span id="sentenceCount">1</span>
-                        Sentences
-                    </div>
+                    <div class="stat"><span id="wordCount">2</span>Words</div>
+                    <div class="stat"><span id="charCount">20</span>Characters</div>
+                    <div class="stat"><span id="sentenceCount">1</span>Sentences</div>
                 </div>
             </div>
 
@@ -829,21 +973,15 @@
                     <i class="fas fa-text-height" style="color: #64D2FF;"></i>
                     <h2 style="color: #64D2FF;">Case Converter</h2>
                 </div>
-                
                 <textarea class="textarea" id="caseInput" placeholder="Enter your text..." oninput="convertCase('upper')">convert this text</textarea>
-                
                 <div class="case-buttons">
                     <button class="case-btn" onclick="convertCase('upper')">UPPERCASE</button>
                     <button class="case-btn" onclick="convertCase('lower')">lowercase</button>
                     <button class="case-btn" onclick="convertCase('title')">Title Case</button>
                     <button class="case-btn" onclick="convertCase('sentence')">Sentence case</button>
                 </div>
-                
                 <textarea class="textarea" id="caseOutput" readonly placeholder="Converted text..." style="margin-top: 20px;">CONVERT THIS TEXT</textarea>
-                
-                <button class="btn" onclick="copyCase()" style="margin-top: 20px;">
-                    <i class="fas fa-copy"></i> Copy Result
-                </button>
+                <button class="btn" onclick="copyCase()" style="margin-top: 20px;"><i class="fas fa-copy"></i> Copy Result</button>
             </div>
 
             <!-- Number Converter -->
@@ -852,7 +990,6 @@
                     <i class="fas fa-calculator" style="color: #32D74B;"></i>
                     <h2 style="color: #32D74B;">Number Converter</h2>
                 </div>
-                
                 <div class="converter-input">
                     <input type="text" id="numberInput" value="255" oninput="convertNumber()">
                     <select id="numberType" onchange="convertNumber()">
@@ -862,28 +999,12 @@
                         <option value="octal">Octal</option>
                     </select>
                 </div>
-                
                 <div class="number-grid">
-                    <div class="number-box">
-                        <label>Decimal</label>
-                        <div id="decimalOut">255</div>
-                    </div>
-                    <div class="number-box">
-                        <label>Binary</label>
-                        <div id="binaryOut">11111111</div>
-                    </div>
-                    <div class="number-box">
-                        <label>Hexadecimal</label>
-                        <div id="hexOut">FF</div>
-                    </div>
-                    <div class="number-box">
-                        <label>Octal</label>
-                        <div id="octalOut">377</div>
-                    </div>
-                    <div class="number-box">
-                        <label>Roman</label>
-                        <div id="romanOut">CCLV</div>
-                    </div>
+                    <div class="number-box"><label>Decimal</label><div id="decimalOut">255</div></div>
+                    <div class="number-box"><label>Binary</label><div id="binaryOut">11111111</div></div>
+                    <div class="number-box"><label>Hexadecimal</label><div id="hexOut">FF</div></div>
+                    <div class="number-box"><label>Octal</label><div id="octalOut">377</div></div>
+                    <div class="number-box"><label>Roman</label><div id="romanOut">CCLV</div></div>
                 </div>
             </div>
 
@@ -893,7 +1014,6 @@
                     <i class="fas fa-cake-candles" style="color: #FF375F;"></i>
                     <h2 style="color: #FF375F;">Age Calculator</h2>
                 </div>
-                
                 <div class="date-inputs">
                     <input type="number" id="birthDay" placeholder="Day" min="1" max="31" value="15">
                     <select id="birthMonth">
@@ -912,76 +1032,39 @@
                     </select>
                     <input type="number" id="birthYear" placeholder="Year" min="1900" max="2024" value="1995">
                 </div>
-                
-                <button class="btn" onclick="calculateAge()" style="margin-bottom: 30px;">
-                    <i class="fas fa-calculator"></i> Calculate Age
-                </button>
-                
+                <button class="btn" onclick="calculateAge()" style="margin-bottom: 30px;"><i class="fas fa-calculator"></i> Calculate Age</button>
                 <div class="age-stats">
-                    <div class="age-stat">
-                        <span id="ageYears">29</span>
-                        Years
-                    </div>
-                    <div class="age-stat">
-                        <span id="ageMonths">5</span>
-                        Months
-                    </div>
-                    <div class="age-stat">
-                        <span id="ageDays">15</span>
-                        Days
-                    </div>
+                    <div class="age-stat"><span id="ageYears">29</span>Years</div>
+                    <div class="age-stat"><span id="ageMonths">5</span>Months</div>
+                    <div class="age-stat"><span id="ageDays">15</span>Days</div>
                 </div>
             </div>
         </div>
 
-        <!-- Footer with Contact & Legal -->
+        <!-- Footer -->
         <footer class="footer">
             <div class="footer-content">
-                <!-- Contact Section -->
                 <div class="footer-section">
                     <h3><i class="fas fa-phone-alt"></i> Contact Us</h3>
-                    <p>Have questions or need help? We're here for you!</p>
-                    <a href="https://wa.me/923270553470?text=Hi%21%20I%20need%20help%20with%20ToolBox%20Pro" 
-                       class="whatsapp-btn" 
-                       target="_blank">
+                    <p>Have questions? We're here for you 24/7!</p>
+                    <a href="https://wa.me/923270553470?text=Hi! I need help with ToolBox Pro" class="whatsapp-btn" target="_blank">
                         <i class="fab fa-whatsapp"></i> +92 327 0553470
                     </a>
-                    <p style="margin-top: 20px; font-size: 14px;">
-                        <i class="fas fa-clock"></i> 24/7 Available
-                    </p>
                 </div>
-
-                <!-- Legal Section -->
                 <div class="footer-section">
                     <h3><i class="fas fa-gavel"></i> Legal</h3>
                     <div class="legal-links">
-                        <div class="legal-link" onclick="openModal('privacyModal')">
-                            <i class="fas fa-shield-alt"></i> Privacy Policy
-                        </div>
-                        <div class="legal-link" onclick="openModal('termsModal')">
-                            <i class="fas fa-file-contract"></i> Terms & Conditions
-                        </div>
-                        <div class="legal-link">
-                            <i class="fas fa-copyright"></i> All Rights Reserved
-                        </div>
+                        <div class="legal-link" onclick="openModal('privacyModal')"><i class="fas fa-shield-alt"></i> Privacy Policy</div>
+                        <div class="legal-link" onclick="openModal('termsModal')"><i class="fas fa-file-contract"></i> Terms & Conditions</div>
                     </div>
                 </div>
-
-                <!-- About Section -->
                 <div class="footer-section">
                     <h3><i class="fas fa-info-circle"></i> About</h3>
-                    <p>ToolBox Pro provides professional free online tools for everyday tasks. All tools work directly in your browser - no data is sent to our servers.</p>
-                    <p style="margin-top: 15px;">
-                        <i class="fas fa-check-circle" style="color: #32D74B;"></i> 100% Free<br>
-                        <i class="fas fa-check-circle" style="color: #32D74B;"></i> No Registration<br>
-                        <i class="fas fa-check-circle" style="color: #32D74B;"></i> Private & Secure
-                    </p>
+                    <p>Professional free online tools. 100% secure, no registration required.</p>
                 </div>
             </div>
-            
             <div class="copyright">
-                <p>© 2026 ToolBox Pro. All rights reserved. | Made with <i class="fas fa-heart" style="color: #FF375F;"></i> for simplicity</p>
-                <p style="margin-top: 10px; font-size: 12px;">Version 2.0 | Professional Tools Collection</p>
+                <p>© 2026 ToolBox Pro. All rights reserved.</p>
             </div>
         </footer>
     </div>
@@ -998,7 +1081,6 @@
             document.body.style.overflow = 'auto';
         }
 
-        // Close modal when clicking outside
         window.onclick = function(event) {
             if (event.target.classList.contains('modal')) {
                 event.target.classList.remove('active');
@@ -1006,28 +1088,31 @@
             }
         }
 
-        // Page Navigation
+        // Remove all active classes
+        function removeAllActive() {
+            const navBtns = document.querySelectorAll('.nav-btn');
+            navBtns.forEach(btn => {
+                btn.classList.remove('active-home', 'active-password', 'active-word', 'active-case', 'active-number', 'active-age');
+            });
+        }
+
+        // Show Home
         function showHome() {
             document.getElementById('home-page').style.display = 'block';
             document.querySelectorAll('#tool-pages > div').forEach(el => el.classList.add('hidden'));
-            
-            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
-            document.querySelectorAll('.nav-btn')[0].classList.add('active');
+            removeAllActive();
+            document.getElementById('nav-home').classList.add('active-home');
         }
 
+        // Show Tool
         function showTool(tool) {
             document.getElementById('home-page').style.display = 'none';
             document.querySelectorAll('#tool-pages > div').forEach(el => el.classList.add('hidden'));
             document.getElementById(`tool-${tool}`).classList.remove('hidden');
             
-            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
-            document.querySelectorAll('.nav-btn').forEach(btn => {
-                if(btn.innerHTML.includes(tool) || (tool === 'password' && btn.innerHTML.includes('Password'))) {
-                    btn.classList.add('active');
-                }
-            });
+            removeAllActive();
+            document.getElementById(`nav-${tool}`).classList.add(`active-${tool}`);
             
-            // Initialize tool
             if(tool === 'password') generatePassword();
             if(tool === 'word') countWords();
             if(tool === 'case') convertCase('upper');
@@ -1048,68 +1133,47 @@
             if(document.getElementById('lowercase').checked) chars += lowercase;
             if(document.getElementById('numbers').checked) chars += numbers;
             if(document.getElementById('symbols').checked) chars += symbols;
-            
             if(chars === '') chars = uppercase + lowercase + numbers;
             
             let password = '';
             for(let i = 0; i < length; i++) {
                 password += chars[Math.floor(Math.random() * chars.length)];
             }
-            
             document.getElementById('passwordDisplay').textContent = password;
         }
 
         function updateLength() {
-            const val = document.getElementById('passwordLength').value;
-            document.getElementById('lengthValue').textContent = val;
+            document.getElementById('lengthValue').textContent = document.getElementById('passwordLength').value;
             generatePassword();
         }
 
         function copyPassword() {
-            const pass = document.getElementById('passwordDisplay').textContent;
-            navigator.clipboard.writeText(pass);
-            alert('Password copied to clipboard!');
+            navigator.clipboard.writeText(document.getElementById('passwordDisplay').textContent);
+            alert('Password copied!');
         }
 
         // Word Counter
         function countWords() {
             const text = document.getElementById('wordText').value;
-            const words = text.trim() ? text.trim().split(/\s+/).length : 0;
-            const chars = text.length;
-            const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 0).length || 1;
-            
-            document.getElementById('wordCount').textContent = words;
-            document.getElementById('charCount').textContent = chars;
-            document.getElementById('sentenceCount').textContent = sentences;
+            document.getElementById('wordCount').textContent = text.trim() ? text.trim().split(/\s+/).length : 0;
+            document.getElementById('charCount').textContent = text.length;
+            document.getElementById('sentenceCount').textContent = text.split(/[.!?]+/).filter(s => s.trim().length > 0).length || 1;
         }
 
         // Case Converter
         function convertCase(type) {
             const input = document.getElementById('caseInput').value;
             let output = input;
-            
-            switch(type) {
-                case 'upper': 
-                    output = input.toUpperCase(); 
-                    break;
-                case 'lower': 
-                    output = input.toLowerCase(); 
-                    break;
-                case 'title': 
-                    output = input.toLowerCase().replace(/\b\w/g, l => l.toUpperCase()); 
-                    break;
-                case 'sentence':
-                    output = input.toLowerCase().replace(/(^\s*\w|[.!?]\s+\w)/g, l => l.toUpperCase());
-                    break;
-            }
-            
+            if(type === 'upper') output = input.toUpperCase();
+            if(type === 'lower') output = input.toLowerCase();
+            if(type === 'title') output = input.toLowerCase().replace(/\b\w/g, l => l.toUpperCase());
+            if(type === 'sentence') output = input.toLowerCase().replace(/(^\s*\w|[.!?]\s+\w)/g, l => l.toUpperCase());
             document.getElementById('caseOutput').value = output;
         }
 
         function copyCase() {
-            const text = document.getElementById('caseOutput').value;
-            navigator.clipboard.writeText(text);
-            alert('Text copied to clipboard!');
+            navigator.clipboard.writeText(document.getElementById('caseOutput').value);
+            alert('Text copied!');
         }
 
         // Number Converter
@@ -1117,7 +1181,6 @@
             const input = document.getElementById('numberInput').value;
             const type = document.getElementById('numberType').value;
             let num = 0;
-            
             try {
                 if(type === 'decimal') num = parseInt(input) || 0;
                 if(type === 'binary') num = parseInt(input, 2) || 0;
@@ -1129,7 +1192,6 @@
                 document.getElementById('hexOut').textContent = num.toString(16).toUpperCase();
                 document.getElementById('octalOut').textContent = num.toString(8);
                 
-                // Roman numerals
                 const roman = ['M','CM','D','CD','C','XC','L','XL','X','IX','V','IV','I'];
                 const values = [1000,900,500,400,100,90,50,40,10,9,5,4,1];
                 let romanNum = '';
@@ -1141,9 +1203,7 @@
                     }
                 }
                 document.getElementById('romanOut').textContent = romanNum || '0';
-            } catch(e) {
-                // Ignore errors
-            }
+            } catch(e) {}
         }
 
         // Age Calculator
@@ -1164,7 +1224,6 @@
                 const lastMonth = new Date(today.getFullYear(), today.getMonth(), 0);
                 days += lastMonth.getDate();
             }
-            
             if(months < 0) {
                 years--;
                 months += 12;
@@ -1180,7 +1239,7 @@
             showHome();
             setTimeout(() => {
                 document.querySelector('.splash').style.display = 'none';
-            }, 2000);
+            }, 2400);
         }
     </script>
 </body>
